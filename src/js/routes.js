@@ -2,7 +2,7 @@
 import HomePage from '../pages/home.svelte';
 import AboutPage from '../pages/about.svelte';
 import FormPage from '../pages/form.svelte';
-
+import Login from '../pages/login.svelte'
 
 import DynamicRoutePage from '../pages/dynamic-route.svelte';
 import RequestAndLoad from '../pages/request-and-load.svelte';
@@ -21,8 +21,10 @@ var routes = [
     path: '/form/',
     component: FormPage,
   },
-
-
+  {
+    path: '/login/',
+    component: Login,
+  },
   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',
     component: DynamicRoutePage,
