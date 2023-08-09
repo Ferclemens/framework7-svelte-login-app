@@ -24,17 +24,35 @@
   </Page>
   <script>
     import { Page, LoginScreenTitle, List, ListInput, ListButton, BlockFooter, Navbar, f7 } from 'framework7-svelte';
+  import { onMount } from 'svelte';
     // Login screen demo data
     let username = '';
     let password = '';
+    //Hardcode users
     let validUsername = 'admin';
     let validPassword = 'admin';
 
+    //props to receive component
+    //export let f7route;
+    export let f7router;
+
+    //interesante para realizar acciones cuando carga el componente (svelte)
+    /* onMount(() => {
+      console.log(f7route.url)
+    }); */
+
+    //root to navigate if login is success
+    const navigate = () => {
+      f7router.navigate('/about/');
+    }
+    //user validation
     function login(username, password) {
       if(username === validUsername && password === validPassword){
-        f7.dialog.alert('Success!, your redirect to welcome page', () => {
-        router.navigate('/about/', { transition: 'f7-cover' })
-        });
+        f7.dialog.preloader('Success login, Welcome!')
+          setTimeout(()=>{
+            f7.dialog.close()
+            navigate()
+          },2000)
       } else {
         f7.dialog.alert('Incorrect username or password', () => {
         f7.loginScreen.close();
