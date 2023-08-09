@@ -1,0 +1,18 @@
+{
+  "cwd": "C:\\Users\\Fer\\Desktop\\Programing\\TRABAJO\\Framework7",
+  "type": [
+    "pwa"
+  ],
+  "name": "My App",
+  "framework": "svelte",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": true,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
