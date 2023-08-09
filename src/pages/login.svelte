@@ -24,38 +24,45 @@
   </Page>
   <script>
     import { Page, LoginScreenTitle, List, ListInput, ListButton, BlockFooter, Navbar, f7 } from 'framework7-svelte';
-  import { onMount } from 'svelte';
-    // Login screen demo data
-    let username = '';
-    let password = '';
-    //Hardcode users
+    import store from '../js/store.js'
+    import { onMount } from 'svelte';
+    /* //Hardcode users
     let validUsername = 'admin';
     let validPassword = 'admin';
+    */
+   // Login screen data
+   let username = '';
+   let password = '';
 
-    //props to receive component
-    //export let f7route;
-    export let f7router;
-
-    //interesante para realizar acciones cuando carga el componente (svelte)
-    /* onMount(() => {
-      console.log(f7route.url)
+   //props to receive component
+   //export let f7route;
+   export let f7router;
+   
+   //interesante para realizar acciones cuando carga el componente como un useEffect (svelte)
+   /* onMount(() => {
+     console.log(f7route.url)
     }); */
-
-    //root to navigate if login is success
-    const navigate = () => {
+    
+    //root to navigate if login success
+    function navigateToWelcomePage(){
       f7router.navigate('/about/');
     }
+    console.log(store.state.users);
+    //users store
+    const usersStore = store.state.users
     //user validation
     function login(username, password) {
-      if(username === validUsername && password === validPassword){
-        f7.dialog.preloader('Success login, Welcome!')
-          setTimeout(()=>{
+      //buscamos hacer match con algun usuario de la db
+      let match = usersStore.find((user) => user.name === username && user.password === password )
+      if(match){
+        f7.dialog.preloader('Success login Welcome!')
+        setTimeout(()=>{
             f7.dialog.close()
-            navigate()
-          },2000)
+            navigateToWelcomePage()
+          },1500)
       } else {
         f7.dialog.alert('Incorrect username or password', () => {
-        f7.loginScreen.close();
+        f7.dialog.close();
         });
       }
     }
