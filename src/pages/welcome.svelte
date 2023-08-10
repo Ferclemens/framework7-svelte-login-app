@@ -1,10 +1,9 @@
 <Page>
   <Navbar title="My Login App"/>
-  <BlockTitle>Welcome to My Login App</BlockTitle>
-  <Block>
-    <h1>Welcome {user}!</h1>
-    <h2>Enjoy</h2>
-  </Block>
+    <div>
+      <h1>Welcome <br/>{user} !</h1>
+      <img src="./rafa.gif" alt="Rafa say Hi!"/>
+    </div>
   <List  strong outlineIos dividersIos insetMd accordionList >
     <ListButton onClick={()=>logOut()}>
       <LoginScreenTitle>Log out</LoginScreenTitle>
@@ -12,7 +11,7 @@
   </List>
 </Page>
 <script>
-  import { Page, Navbar, Block, BlockTitle, Button, List, ListButton, LoginScreenTitle, f7 } from 'framework7-svelte';
+  import { Page, Navbar, Block, BlockTitle, Button, List, ListButton, LoginScreenTitle, f7, ListItem } from 'framework7-svelte';
   import store from '../js/store.js'
   //console.log(store.state.users);
   let usersStore = store.state.users
@@ -45,3 +44,32 @@
   }
   
 </script>
+<style>
+  @font-face {
+    font-family: 'Simpson';
+    src: url(/Simpson.otf);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Simpson';
+    background-color: #252525;
+    padding: 5px 0;
+    margin: 80px 20px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    text-shadow: 2px 2px 0 black;
+  }
+  h1 {
+    font-size: 2.3rem;
+    margin: 10px;
+    text-align: center;
+  }
+  img {
+    width: 90%;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+</style>
