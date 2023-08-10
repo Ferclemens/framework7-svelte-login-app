@@ -6,11 +6,13 @@ const store = createStore({
     users: [
       {
         name: 'admin',
-        password: 'admin'
+        password: 'admin',
+        online: false
       },
       {
         name: 'user',
-        password: 'user'
+        password: 'user',
+        online: false
       },
     ]
   },
@@ -20,9 +22,17 @@ const store = createStore({
     }
   },
   actions: {
-    addUser({ state }, users) {
-      state.users = [...state.users, users];
+    addUser({ state }, newUser) {
+      state.users = [...state.users, newUser];
     },
+    setUserState({ state }, userName){
+      state.users.map((userDb) => {
+        if(userDb.name === userName){
+          userDb.online = true
+        }
+      })
+      
+    }
   },
 })
 export default store;

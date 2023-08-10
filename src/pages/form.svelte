@@ -1,7 +1,9 @@
 <Page >
   <Navbar title="Create account" backLink="Back"></Navbar>
   <BlockTitle large>
-    Please complete inputs <br/>to create acount
+    <LoginScreenTitle>
+      Please complete inputs <br/>to create acount
+    </LoginScreenTitle>
   </BlockTitle>
   <List strongIos outlineIos dividersIos>
     <ListInput
@@ -22,7 +24,9 @@
     placeholder="Re enter your password"
     bind:value={repassword}
   ></ListInput>
-  <ListButton fill title="Create" onClick={() => addUserToDB(username, password)}/>
+  <ListButton fill onClick={() => addUserToDB(username, password)}>
+    <LoginScreenTitle>Create</LoginScreenTitle>
+  </ListButton>
   </List>
   <BlockFooter>
     have account?  <a href={'/login/'}>Sign In</a>
@@ -45,7 +49,10 @@
 
     f7,
 
-    BlockFooter
+    BlockFooter,
+
+    LoginScreenTitle
+
 
 
 
