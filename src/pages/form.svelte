@@ -100,7 +100,8 @@
     if(passwordOK && usernameOK){
       newUser = {
         ['name']: user,
-        ['password']: pass
+        ['password']: pass,
+        ['online']: false
       }
       //add new user to db (like Redux)
       store.dispatch('addUser', newUser)
