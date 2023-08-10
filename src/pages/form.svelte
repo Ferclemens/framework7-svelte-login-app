@@ -44,18 +44,10 @@
     Button,
     Range,
     Block,
-
     ListButton,
-
     f7,
-
     BlockFooter,
-
     LoginScreenTitle
-
-
-
-
   } from 'framework7-svelte';
   import store from '../js/store';
   
@@ -88,10 +80,12 @@
   }   
   //props
   export let f7router;
+
   //root to login
   function navigateToLogin(){
     f7router.navigate('/login/');
   }
+
   // agregamos nuevo usuario a la db, despues de verificar password
   function addUserToDB(user, pass){
     let newUser = {}
@@ -105,7 +99,7 @@
       }
       //add new user to db (like Redux)
       store.dispatch('addUser', newUser)
-      f7.dialog.preloader('Success! Redirect to login')
+      f7.dialog.preloader('Success! Redirect to log in')
       setTimeout(()=>{
         f7.dialog.close()
         navigateToLogin()

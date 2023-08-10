@@ -25,10 +25,11 @@ const store = createStore({
     addUser({ state }, newUser) {
       state.users = [...state.users, newUser];
     },
+    //change state user (log in/ log out)
     setUserState({ state }, userName){
       state.users.map((userDb) => {
         if(userDb.name === userName){
-          userDb.online = true
+          userDb.online = !userDb.online
         }
       })
       

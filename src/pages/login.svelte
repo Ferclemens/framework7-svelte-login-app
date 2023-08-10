@@ -18,7 +18,7 @@
         bind:value={password}
       />
     </List>
-    <List>
+    <List  strong outlineIos dividersIos insetMd accordionList >
       <ListButton onClick={() => login(username, password)}>
         <LoginScreenTitle>Log in</LoginScreenTitle>
       </ListButton>
@@ -34,7 +34,7 @@
       <AccordionContent>
         <Block>
           <p>
-            You can use hardcode user to log in or create one in "Sign Up":
+            You can create user in "Sign Up" or log in with hardcode users:
             <br/>user: admin | password: admin <br/>user: user | password: user
           </p>
         </Block>
@@ -81,7 +81,7 @@
       if(match){
         store.dispatch('setUserState', match.name)
         console.log(match);
-        f7.dialog.preloader('Success login Welcome!')
+        f7.dialog.preloader('Success log in Welcome!')
         setTimeout(()=>{
             f7.dialog.close()
             navigateToWelcomePage()
