@@ -1,5 +1,8 @@
-<Page name="form">
+<Page >
   <Navbar title="Create account" backLink="Back"></Navbar>
+  <BlockTitle large>
+    Please complete inputs <br/>to create acount
+  </BlockTitle>
   <List strongIos outlineIos dividersIos>
     <ListInput
       label="Username"
@@ -21,6 +24,9 @@
   ></ListInput>
   <ListButton fill title="Create" onClick={() => addUserToDB(username, password)}/>
   </List>
+  <BlockFooter>
+    have account?  <a href={'/login/'}>Sign In</a>
+  </BlockFooter>
 </Page>
 <script>
   import {
@@ -37,7 +43,10 @@
 
     ListButton,
 
-    f7
+    f7,
+
+    BlockFooter
+
 
 
   } from 'framework7-svelte';
@@ -49,11 +58,23 @@
   let password = ''
   let repassword = ''
   
+  //password validation
   function checkPassword(pass, repass){
     if(pass === repass){
       return pass
     } else {
-      f7.dialog.alert('passwords must match. Try again',() => {
+      f7.dialog.alert('Passwords must match. Try again',() => {
+        f7.dialog.close()
+      })
+    }
+  }
+
+  //user validation
+  function checkUsername(name) {
+    if(name != ''){
+      return name
+    } else {
+      f7.dialog.alert('Username cannot be empty. Try again',() => {
         f7.dialog.close()
       })
     }
@@ -68,7 +89,8 @@
   function addUserToDB(user, pass){
     let newUser = {}
     let passwordOK = checkPassword(pass, repassword)
-    if(passwordOK){
+    let usernameOK = checkUsername(user)
+    if(passwordOK && usernameOK){
       newUser = {
         ['name']: user,
         ['password']: pass

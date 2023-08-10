@@ -1,6 +1,9 @@
-<Page loginScreen>
-    <Navbar title="log in" backLink="Back"></Navbar>
-    <LoginScreenTitle>Login to <br/>your account</LoginScreenTitle>
+<Page>
+    <Navbar title="My Login App
+    " ></Navbar>
+    <BlockTitle large>
+      <LoginScreenTitle >Login to <br/>your account</LoginScreenTitle>
+    </BlockTitle>
     <List form>
       <ListInput
         type="text"
@@ -18,18 +21,27 @@
     <List>
       <ListButton fill title="Sign In" onClick={() => login(username, password)} />
     </List>
-    <BlockFooter>
-      Some text about login information.<br />Click "Sign In" to close Login Screen
-    </BlockFooter>
+    <Block medium>
+      No account yet?  <a href={'/form/'}>Sign Up</a>
+    </Block>
+  <List strong outlineIos dividersIos insetMd accordionList>
+    <ListItem accordionItem title="Instructions">
+      <AccordionContent>
+        <Block>
+          <p>
+            You can use hardcode user to login or create one in "Sign Up":
+            <br/>user: admin | password: admin <br/>user: user | password: user
+          </p>
+        </Block>
+      </AccordionContent>
+    </ListItem>
+  </List>
   </Page>
   <script>
-    import { Page, LoginScreenTitle, List, ListInput, ListButton, BlockFooter, Navbar, f7 } from 'framework7-svelte';
+    import { Page, LoginScreenTitle, List, ListInput, ListButton, BlockFooter, Navbar, f7, Block, BlockTitle, AccordionContent, ListItem } from 'framework7-svelte';
     import store from '../js/store.js'
     import { onMount } from 'svelte';
-    /* //Hardcode users
-    let validUsername = 'admin';
-    let validPassword = 'admin';
-    */
+
    // Login screen data
    let username = '';
    let password = '';
@@ -45,9 +57,10 @@
     
     //root to navigate if login success
     function navigateToWelcomePage(){
-      f7router.navigate('/about/');
+      f7router.navigate('/welcome/');
     }
-    console.log(store.state.users);
+    
+    //console.log(store.state.users);
     //users store
     const usersStore = store.state.users
     //user validation
