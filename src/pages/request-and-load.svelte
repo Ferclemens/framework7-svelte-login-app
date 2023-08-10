@@ -16,6 +16,6 @@
 </Page>
 <script>
   import { Page, Navbar, Block, List, ListItem } from 'framework7-svelte';
-
+  
   export let user;
 </script>

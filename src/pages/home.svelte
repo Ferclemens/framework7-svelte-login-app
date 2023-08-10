@@ -1,44 +1,47 @@
 <Page name="home">
   <!-- Top Navbar -->
-  <Navbar large sliding={false}>
-    <NavLeft>
+  <Navbar sliding={false}>
+<!--     <NavLeft>
       <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left" />
-    </NavLeft>
-    <NavTitle sliding>My App</NavTitle>
+    </NavLeft> -->
+<!--     <NavTitle sliding>My login App</NavTitle>
     <NavRight>
       <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="right" />
-    </NavRight>
-    <NavTitleLarge>My App</NavTitleLarge>
+    </NavRight> -->
+    <NavTitle>My login App</NavTitle>
   </Navbar>
   <!-- Toolbar -->
   <Toolbar bottom>
-    <Link>Left Link</Link>
-    <Link>Right Link</Link>
+    <!-- <Link>Left Link</Link> -->
+    <!-- <Link>Right Link</Link> -->
+    <Block>
+      <p>Here is your blank Framework7 app. Let's see what we have here.</p>
+    </Block>
   </Toolbar>
   <!-- Page content -->
-  <Block>
+<!--   <Block>
     <p>Here is your blank Framework7 app. Let's see what we have here.</p>
-  </Block>
+  </Block> -->
 
-  <BlockTitle>Navigation</BlockTitle>
+  <BlockTitle>Welcome to my login app</BlockTitle>
   <List strong inset dividersIos>
-    <ListItem link="/about/" title="About"/>
-    <ListItem link="/form/" title="Form"/>
+    <ListItem link="/login/" title="Log in"/>
+    <ListItem link="/form/" title="Create acount"/>
   </List>
 
-  <BlockTitle>Modals</BlockTitle>
-  <Block class="grid grid-cols-2 grid-gap">
-    <Button fill popupOpen="#my-popup">Popup</Button>
-    <Button fill loginScreenOpen="#my-login-screen">Login Screen</Button>
-  </Block>
+  <!-- <BlockTitle>Modals</BlockTitle> -->
+<!--   <Block class="grid grid-cols-2 grid-gap">
+    <Button fill loginScreenOpen="#my-login-screen">Have account? Log in</Button>
+    <Button fill popupOpen="#my-popup">Not yet? Create one!</Button>
+  </Block> -->
 
-  <BlockTitle>Panels</BlockTitle>
+  <!-- <BlockTitle>Panels</BlockTitle>
   <Block class="grid grid-cols-2 grid-gap">
     <Button fill panelOpen="left">Left Panel</Button>
     <Button fill panelOpen="right">Right Panel</Button>
-  </Block>
+  </Block> -->
 
-  <List strong inset dividersIos>
+<!--   <List strong inset dividersIos>
     <ListItem
       title="Dynamic (Component) Route"
       link="/dynamic-route/blog/45/post/125/?foo=bar#about"
@@ -51,7 +54,7 @@
       title="Request Data & Load"
       link="/request-and-load/user/123456/"
     />
-  </List>
+  </List> -->
 </Page>
 <script>
   import {
