@@ -7,6 +7,7 @@
   - Forms have inputs validations  
   - Mobile design
   - fluid interface
+  - Test cases
 
 ## Framework7 CLI Options
 
