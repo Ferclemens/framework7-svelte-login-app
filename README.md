@@ -3,7 +3,7 @@
 # Challenge about create a wpa with login and welcome page.
 
 ## features
-  - You can create our user, or log in with hardcode users
+  - You can create your user, or log in with 'hardcode' users
   - Forms have inputs validations  
   - Mobile design
   - fluid interface
