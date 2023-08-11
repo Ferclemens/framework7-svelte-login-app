@@ -151,7 +151,7 @@
 | Escenario | Crear usuario nuevo con re ingreso de contraseña incorrecto. |
 | --- | --- |
 | Given |Iniciada la app en la interfaz de "log In" 
-|When|El cliente se dirige a "sign up" y completa los campos de username y password de forma correcta, menos el campo de re-password. |
+|When|El cliente se dirige a "sign up" y completa los campos de username y password de forma correcta, y el campo de re-password de forma incorrecta. |
 |Then|Se avisa del error y permanecemos en la interfaz de "create account"|
 
 ### Pasos de ejecución
