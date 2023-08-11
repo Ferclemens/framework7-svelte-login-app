@@ -1,6 +1,11 @@
-<Page name="form">
+<Page >
   <Navbar title="Create account" backLink="Back"></Navbar>
-  <List strongIos outlineIos dividersIos>
+  <BlockTitle large>
+    <LoginScreenTitle>
+      Please complete inputs <br/>to create acount
+    </LoginScreenTitle>
+  </BlockTitle>
+  <List strongIos outlineIos dividersIos form>
     <ListInput
       label="Username"
       type="text"
@@ -11,16 +16,27 @@
       label="Password"
       type="password"
       placeholder="Password"
+      autocomplete= "off"
       bind:value={password}
     ></ListInput>
     <ListInput
     label="Re-password"
     type="password"
     placeholder="Re enter your password"
+    autocomplete= "off"
     bind:value={repassword}
   ></ListInput>
-  <ListButton fill title="Create" onClick={() => addUserToDB(username, password)}/>
   </List>
+  <List strong outlineIos dividersIos insetMd accordionList>
+    <ListButton fill onClick={() => addUserToDB(username, password)}>
+      <LoginScreenTitle>Create</LoginScreenTitle>
+    </ListButton>
+  </List>
+  <Block>
+    <BlockFooter>
+      <p class="msj">have account?  <a href={'/login/'}>Sign In</a></p>
+    </BlockFooter>
+  </Block>
 </Page>
 <script>
   import {
@@ -28,54 +44,63 @@
     Navbar,
     List,
     ListInput,
-    ListItem,
-    Toggle,
     BlockTitle,
-    Button,
-    Range,
     Block,
-
     ListButton,
-
-    f7
-
-
+    f7,
+    BlockFooter,
+    LoginScreenTitle
   } from 'framework7-svelte';
   import store from '../js/store';
-  
   
   //form data
   let username = ''
   let password = ''
   let repassword = ''
   
+  //password validation
   function checkPassword(pass, repass){
-    if(pass === repass){
+    if(pass === repass && pass != ''){
       return pass
     } else {
-      f7.dialog.alert('passwords must match. Try again',() => {
+      f7.dialog.alert('password cannot be empty and must match. Try again',() => {
+        f7.dialog.close()
+      })
+    }
+  }
+
+  //user validation
+  function checkUsername(name) {
+    if(name != ''){
+      return name
+    } else {
+      f7.dialog.alert('Username cannot be empty. Try again',() => {
         f7.dialog.close()
       })
     }
   }   
   //props
   export let f7router;
+
   //root to login
   function navigateToLogin(){
     f7router.navigate('/login/');
   }
+
   // agregamos nuevo usuario a la db, despues de verificar password
   function addUserToDB(user, pass){
     let newUser = {}
     let passwordOK = checkPassword(pass, repassword)
-    if(passwordOK){
+    let usernameOK = checkUsername(user)
+    if(passwordOK && usernameOK){
       newUser = {
         ['name']: user,
-        ['password']: pass
+        ['password']: pass,
+        ['online']: false
       }
       //add new user to db (like Redux)
       store.dispatch('addUser', newUser)
-      f7.dialog.preloader('Success! Redirect to login')
+      f7.dialog.preloader('Success! Redirect to log in')
       setTimeout(()=>{
         f7.dialog.close()
         navigateToLogin()
@@ -83,3 +108,8 @@
     }
   }
 </script>
+<style>
+  .msj {
+    text-align: center;
+  }
+</style>
