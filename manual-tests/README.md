@@ -4,7 +4,7 @@
 ### Pre requisitos:
 -   Acceso a internet
 -   Sistema operativo Windows 10 Pro versión 22H2
--   Navegador web Google Chrome versión Versión 113.0.5672.127 (Build oficial) (64 bits)
+-   Navegador web Google Chrome Versión 115.0.5790.171 (Build oficial) (64 bits)
 
 ### Resumen de casos
 
