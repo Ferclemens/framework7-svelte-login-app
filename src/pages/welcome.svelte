@@ -11,7 +11,7 @@
   </List>
 </Page>
 <script>
-  import { Page, Navbar, Block, BlockTitle, Button, List, ListButton, LoginScreenTitle, f7, ListItem } from 'framework7-svelte';
+  import { Page, Navbar, List, ListButton, LoginScreenTitle, f7 } from 'framework7-svelte';
   import store from '../js/store.js'
   //console.log(store.state.users);
   let usersStore = store.state.users
@@ -27,7 +27,7 @@
   //find name of user loged (online = true)
   function setWelcomeName(){
     let match = usersStore.find((user) => user.online === true)
-    console.log('Welcome match', match);
+    //console.log('Welcome match', match);
     if(match) {
       return match.name
     }
@@ -36,7 +36,7 @@
   function logOut() {
     store.dispatch('setUserState', user)
     //console.log(usersStore);
-    f7.dialog.preloader('We miss you! Redirect to log in')
+    f7.dialog.preloader('Byee! Byee! Redirect to log in')
       setTimeout(()=>{
         f7.dialog.close()
         navigateToLogin()

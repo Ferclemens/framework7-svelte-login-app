@@ -5,7 +5,7 @@
       Please complete inputs <br/>to create acount
     </LoginScreenTitle>
   </BlockTitle>
-  <List strongIos outlineIos dividersIos>
+  <List strongIos outlineIos dividersIos form>
     <ListInput
       label="Username"
       type="text"
@@ -16,21 +16,27 @@
       label="Password"
       type="password"
       placeholder="Password"
+      autocomplete= "off"
       bind:value={password}
     ></ListInput>
     <ListInput
     label="Re-password"
     type="password"
     placeholder="Re enter your password"
+    autocomplete= "off"
     bind:value={repassword}
   ></ListInput>
-  <ListButton fill onClick={() => addUserToDB(username, password)}>
-    <LoginScreenTitle>Create</LoginScreenTitle>
-  </ListButton>
   </List>
-  <BlockFooter>
-    have account?  <a href={'/login/'}>Sign In</a>
-  </BlockFooter>
+  <List strong outlineIos dividersIos insetMd accordionList>
+    <ListButton fill onClick={() => addUserToDB(username, password)}>
+      <LoginScreenTitle>Create</LoginScreenTitle>
+    </ListButton>
+  </List>
+  <Block>
+    <BlockFooter>
+      <p class="msj">have account?  <a href={'/login/'}>Sign In</a></p>
+    </BlockFooter>
+  </Block>
 </Page>
 <script>
   import {
@@ -38,11 +44,7 @@
     Navbar,
     List,
     ListInput,
-    ListItem,
-    Toggle,
     BlockTitle,
-    Button,
-    Range,
     Block,
     ListButton,
     f7,
@@ -51,7 +53,6 @@
   } from 'framework7-svelte';
   import store from '../js/store';
   
-  
   //form data
   let username = ''
   let password = ''
@@ -59,10 +60,10 @@
   
   //password validation
   function checkPassword(pass, repass){
-    if(pass === repass){
+    if(pass === repass && pass != ''){
       return pass
     } else {
-      f7.dialog.alert('Passwords must match. Try again',() => {
+      f7.dialog.alert('password cannot be empty and must match. Try again',() => {
         f7.dialog.close()
       })
     }
@@ -107,3 +108,8 @@
     }
   }
 </script>
+<style>
+  .msj {
+    text-align: center;
+  }
+</style>

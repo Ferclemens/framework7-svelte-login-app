@@ -3,32 +3,7 @@
 </App>
 <script>
   import { onMount } from 'svelte';
-
-  import {
-    f7,
-    f7ready,
-    App,
-    Panel,
-    Views,
-    View,
-    Popup,
-    Page,
-    Navbar,
-    Toolbar,
-    NavRight,
-    Link,
-    Block,
-    BlockTitle,
-    LoginScreen,
-    LoginScreenTitle,
-    List,
-    ListItem,
-    ListInput,
-    ListButton,
-    BlockFooter
-  } from 'framework7-svelte';
-
-
+  import { f7ready, App, View } from 'framework7-svelte';
   import routes from '../js/routes';
   import store from '../js/store';
 
