@@ -1,4 +1,12 @@
-# My App
+# My Login App
+
+# Challenge about create a wpa with login and welcome page.
+
+## features
+  - You can create our user, or log in with hardcode users
+  - Forms have inputs validations  
+  - Mobile design
+  - fluid interface
 
 ## Framework7 CLI Options
 
